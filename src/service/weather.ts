@@ -1,12 +1,6 @@
 import {API_CONFIG, DEFAULT_PARAMS} from './config';
 import {getUser} from './user';
 
-function capitalize(string: string) {
-	return string
-		.toLowerCase()
-		.replace(/\b\w/g, firstLetter => firstLetter.toUpperCase());
-}
-
 export function getCity(city: string) {
 	const url = new URL(`${API_CONFIG.BACKEND}/getCity`);
 	const params = {
@@ -15,7 +9,7 @@ export function getCity(city: string) {
 	url.search = new URLSearchParams(params).toString();
 	return fetch(url.href, {method: 'post'})
 		.then(response => response.json())
-		.catch()
+		.catch(console.error)
 		.then(cities => {
 			console.log(cities)
 		})
