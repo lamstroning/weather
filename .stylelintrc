@@ -1,0 +1,22 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-order"
+  ],
+  "ignoreFiles": [
+    "src/style/index.scss",
+    "src/assets/fonts/fonts-awesome/scss/*.scss"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "indentation": [2, "tab"],
+    "scss/dollar-variable-pattern": "^foo",
+    "scss/selector-no-redundant-nesting-selector": true,
+    "order/properties-order": [
+      "width",
+      "height"
+    ]
+  }
+}

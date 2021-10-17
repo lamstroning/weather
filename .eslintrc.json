@@ -28,7 +28,7 @@
         "quotes": ["error", "single"],
         "no-tabs": ["error", {"allowIndentationTabs": true}],
         "react/jsx-indent": ["error", "tab"],
-        "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts", ".png"] }],
         "react/jsx-indent-props": ["error", "tab"],
         "react/react-in-jsx-scope": "off",
         "react/jsx-tag-spacing": ["error", {
