@@ -1,13 +1,12 @@
-import React, {ChangeEvent} from 'react';
-import {getCities, getCity, getCountries, getWeather,} from '../../service/weather';
+import React from 'react';
+import {getCities, getCity, getCountries, getWeather, TWeather} from '../../service/weather';
 import {getUser} from '../../service/user';
 import {Progress} from '../Progress';
-import {setState} from 'jest-circus/build/state';
 
 type State = {
 	countries: any,
 	city: string,
-	weather: any,
+	weather: TWeather,
 	ready: boolean,
 	error: boolean,
 	cities?: any[]
@@ -19,7 +18,11 @@ export default class Weather extends React.Component<any, State> {
 		this.state = {
 			countries: [],
 			city: getUser().city,
-			weather: {},
+			weather: {
+				icon: '',
+				currentTemp: 0,
+				date: ''
+			},
 			ready: false,
 			error: false,
 			cities: undefined
@@ -48,9 +51,13 @@ export default class Weather extends React.Component<any, State> {
 					}));
 					return;
 				}
-				weather.current.condition.icon = weather.current.condition.icon.replace('//cdn.weatherapi.com', '/images');
+				console.log(weather);
 				this.setState(() => ({
-					weather: weather.current,
+					weather: {
+						date: weather.current.condition.date,
+						icon: weather.current.condition.icon.replace('//cdn.weatherapi.com', '/images'),
+						currentTemp: Math.round(weather.current.temp_c)
+					},
 				}))
 			})
 			.catch(console.error)
@@ -66,6 +73,7 @@ export default class Weather extends React.Component<any, State> {
 	}
 
 	choiceCity(city: string) {
+		city = 'russia';
 		getCity(city).then((city: any) => console.log(city))
 	}
 
@@ -76,8 +84,9 @@ export default class Weather extends React.Component<any, State> {
 		if (this.state.ready)
 			return (
 				<div>
-					<img src={this.state.weather.condition.icon} alt=''/>
+					<img src={this.state.weather.icon} alt=''/>
 					{this.state.city}
+					{this.state.weather.currentTemp > 0 ? `+${this.state.weather.currentTemp}` : this.state.weather.currentTemp}
 					<select onChange={event => this.choiceCountry(event.target.value)}>
 						{this.state.countries.map((country: string) =>
 							<option key={country} value={country}>

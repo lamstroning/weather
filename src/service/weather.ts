@@ -49,3 +49,15 @@ export async function getForcastWeather(days: number, city: string | undefined) 
 	url.search = new URLSearchParams(params).toString();
 	return fetch(url.href);
 }
+
+export type TWeather = {
+	date: string;
+	icon: string;
+	currentTemp: number;
+}
+export type TFutureWeather = {
+	date: string;
+	icon: string;
+	maxTemp: number;
+	minTemp: number;
+}

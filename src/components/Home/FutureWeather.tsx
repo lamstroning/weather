@@ -1,9 +1,9 @@
 import React from 'react';
-import {getForcastWeather} from '../../service/weather';
+import {getForcastWeather, TFutureWeather} from '../../service/weather';
 import {getDate} from '../../utils/date';
 
 type State = {
-	forecast: any[]
+	forecast: TFutureWeather[]
 }
 
 export class FutureWeather extends React.Component <any, State> {
