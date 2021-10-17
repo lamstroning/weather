@@ -11,6 +11,7 @@
 		position: relative;
 		animation: loader 2s infinite ease-in-out;
 	}
+
 	&__square {
 		position: absolute;
 		left: 0;
@@ -28,31 +29,75 @@
 }
 
 @keyframes loader {
-	0% {transform:rotate(-45deg)}
-	50%{transform:rotate(-135deg)}
-	100%{transform:rotate(-225deg)}
+	0% {
+		transform: rotate(-45deg);
+	}
+
+	50% {
+		transform: rotate(-135deg);
+	}
+
+	100% {
+		transform: rotate(-225deg);
+	}
 }
 
 @keyframes square-1 {
-	0% {transform:translate(0);}
-	50%{transform:translate(-50px, 0);border-color:#EE4D68}
-	100%{transform:translate(0);}
+	0% {
+		transform: translate(0);
+	}
+
+	50% {
+		transform: translate(-50px, 0);
+		border-color: #ee4d68;
+	}
+
+	100% {
+		transform: translate(0);
+	}
 }
 
 @keyframes square-2 {
-	0%{transform:translate(0);}
-	50%{transform:translate(50px, 0);border-color:#875678}
-	100%{transform:translate(0);}
+	0% {
+		transform: translate(0);
+	}
+
+	50% {
+		transform: translate(50px, 0);
+		border-color: #875678;
+	}
+
+	100% {
+		transform: translate(0);
+	}
 }
 
 @keyframes square-3 {
-	0%{transform:translate(0);}
-	50%{transform:translate(0, -50px);border-color:#FF9900}
-	100%{transform:translate(0);}
+	0% {
+		transform: translate(0);
+	}
+
+	50% {
+		transform: translate(0, -50px);
+		border-color: #f90;
+	}
+
+	100% {
+		transform: translate(0);
+	}
 }
 
 @keyframes square-4 {
-	0%{transform:translate(0);}
-	50%{transform:translate(0, 50px);border-color:#00E4F6}
-	100%{transform:translate(0);}
+	0% {
+		transform: translate(0);
+	}
+
+	50% {
+		transform: translate(0, 50px);
+		border-color: #00e4f6;
+	}
+
+	100% {
+		transform: translate(0);
+	}
 }

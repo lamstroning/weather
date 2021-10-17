@@ -1,4 +1,9 @@
 .App {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Khula', sans-serif;
+  transition: margin 0.5s ease-out;
+  color: #4ec929;
 }
