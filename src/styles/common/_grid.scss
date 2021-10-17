@@ -1,0 +1,80 @@
+$columns-count: 12;
+$offset: 8px;
+
+.container {
+  padding: 16px;
+
+  &_offset {
+    padding: 16px;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin: -16px;
+
+  &_stretch {
+    align-items: stretch;
+  }
+
+  &_wide {
+    width: 100%;
+  }
+
+  @for $i from 1 through $columns-count {
+    &_offset-#{$i} {
+      margin-top: $i * $offset;
+    }
+  }
+
+  &_top {
+    align-items: flex-start;
+  }
+
+  &_bottom {
+    align-items: flex-end;
+  }
+
+  &_center {
+    justify-content: center;
+  }
+
+  &_between {
+    justify-content: space-between;
+  }
+
+  &_end {
+    justify-content: flex-end;
+  }
+
+  &_wrap {
+    flex-wrap: wrap;
+  }
+
+  &_column {
+    flex-direction: column;
+  }
+
+  &_clearOffset {
+    margin: 0;
+  }
+}
+
+.col {
+  padding: 16px;
+
+  &_top {
+    margin-top: 16px;
+  }
+
+  &_wide {
+    flex: 1;
+  }
+
+  @for $i from 1 through $columns-count {
+    &_#{$i} {
+      width: 100% / $columns-count * $i;
+    }
+  }
+}

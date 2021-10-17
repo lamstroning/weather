@@ -30,13 +30,18 @@ export class FutureWeather extends React.Component <any, State> {
 
 	render() {
 		return (
-			<div>
-				{this.state.forecast.map((forecast, index) =>
-					<div key={forecast.date}>
-						{forecast.date}
-					</div>
-				)}
+			<div className='container'>
+				<div className='row weather'>
+					{this.state.forecast.map((forecast, index) =>
+						<div className='col weather__card' key={forecast.date}>
+							<div className='weather__date'>
+								{forecast.date}
+							</div>
+						</div>
+					)}
+				</div>
 			</div>
+
 		)
 	}
 }
