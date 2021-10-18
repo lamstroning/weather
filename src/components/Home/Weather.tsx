@@ -40,41 +40,26 @@ export default class Weather extends React.Component<any, State> {
 		this.weather();
 	}
 
-	weather(city?:string) {
-		getWeather(city)
-			.then(response => response.json())
+	weather() {
+		getWeather(this.state.city)
+			.then(weather => this.setState(() => ({weather})))
 			.catch(console.error)
-			.then(weather => {
-				if (weather.error) {
-					this.setState(() => ({
-						error: true
-					}));
-					return;
-				}
-				console.log(weather);
-				this.setState(() => ({
-					weather: {
-						date: weather.current.condition.date,
-						icon: weather.current.condition.icon.replace('//cdn.weatherapi.com', '/images'),
-						currentTemp: Math.round(weather.current.temp_c)
-					},
-				}))
-			})
-			.catch(console.error)
-			.finally(() =>
-				this.setState(() => ({
-					ready: true
-				}))
-			)
+			.finally(() => this.setState(() => ({ready: true})))
 	}
 
 	choiceCountry(country: string) {
-		getCities(country).then(cities => this.setState(() => ({cities})));
+		getCities(country).then(cities => {
+			console.log(cities)
+			cities.sort((a: any, b: any) => a.name.localeCompare(b.name))
+			this.setState(() => ({cities}))
+		});
 	}
 
 	choiceCity(city: string) {
-		city = 'russia';
-		getCity(city).then((city: any) => console.log(city))
+		getCity(city).then((city: string) => {
+			this.setState(() => ({city}));
+			this.weather();
+		})
 	}
 
 	render() {

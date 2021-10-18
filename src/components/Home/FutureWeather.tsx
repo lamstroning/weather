@@ -1,6 +1,5 @@
 import React from 'react';
 import {getForcastWeather, TFutureWeather} from '../../service/weather';
-import {getDate} from '../../utils/date';
 
 type State = {
 	forecast: TFutureWeather[]
@@ -15,25 +14,7 @@ export class FutureWeather extends React.Component <any, State> {
 	}
 
 	componentDidMount() {
-		getForcastWeather(3, 'Moscow')
-			.then(response => response.json())
-			.catch(console.error)
-			.then(({forecast}) => {
-				const forecastData:any = [];
-				forecast.forecastday.forEach((forecast: any) =>
-				{
-					const forecastItem:any = {}
-					forecastItem.date = getDate(forecast.date_epoch * 1000);
-					forecastItem.icon = forecast.day.condition.icon.replace('//cdn.weatherapi.com', '/images');
-					forecastItem.maxTemp = Math.round(forecast.day.maxtemp_c);
-					forecastItem.minTemp = Math.round(forecast.day.mintemp_c);
-					forecastData.push(forecastItem);
-				})
-				this.setState({
-					forecast: forecastData
-				})
-				console.log(forecast);
-			})
+		getForcastWeather(3, 'Moscow').then((forecast) => this.setState(() => ({forecast})))
 	}
 
 	render() {
